@@ -1,6 +1,7 @@
 //PROJECT NAME: prjRHBanco
 package br.com.web.view;
 import br.com.web.services.ServicesFactory;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Bruno Gressler da Silveira
@@ -21,14 +22,28 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBarPrincipal = new javax.swing.JMenuBar();
         jMenuCadastrar = new javax.swing.JMenu();
         jMenuItemCadastrarDepartamento = new javax.swing.JMenuItem();
+        jMenuItemCadastrarFuncionario = new javax.swing.JMenuItem();
         jMenuManutencao = new javax.swing.JMenu();
         jMenuItemManutencaoDepartamento = new javax.swing.JMenuItem();
         jMenuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Siste de Cadastro");
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 563, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 395, Short.MAX_VALUE)
+        );
 
         jMenuCadastrar.setText("Cadastrar");
 
@@ -39,6 +54,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jMenuCadastrar.add(jMenuItemCadastrarDepartamento);
+
+        jMenuItemCadastrarFuncionario.setText("Funcionario");
+        jMenuItemCadastrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCadastrarFuncionarioActionPerformed(evt);
+            }
+        });
+        jMenuCadastrar.add(jMenuItemCadastrarFuncionario);
 
         jMenuBarPrincipal.add(jMenuCadastrar);
 
@@ -68,11 +91,17 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jDesktopPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jDesktopPane1)
+                .addContainerGap())
         );
 
         pack();
@@ -98,6 +127,14 @@ public class Menu extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_jMenuItemManutencaoDepartamentoActionPerformed
+
+    private void jMenuItemCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastrarFuncionarioActionPerformed
+        
+        JOptionPane.showMessageDialog(null, "Coming Soon", "Register", JOptionPane.INFORMATION_MESSAGE);
+        //servicesFactory.abrirCadastroDeFuncionario();
+        //this.dispose();
+        
+    }//GEN-LAST:event_jMenuItemCadastrarFuncionarioActionPerformed
 
     /*private void CadastrarFruta(){
         try {
@@ -160,9 +197,11 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuBar jMenuBarPrincipal;
     private javax.swing.JMenu jMenuCadastrar;
     private javax.swing.JMenuItem jMenuItemCadastrarDepartamento;
+    private javax.swing.JMenuItem jMenuItemCadastrarFuncionario;
     private javax.swing.JMenuItem jMenuItemManutencaoDepartamento;
     private javax.swing.JMenu jMenuManutencao;
     private javax.swing.JMenu jMenuSair;

@@ -27,10 +27,10 @@ public class GUICadastroDeDepartamento extends javax.swing.JFrame {
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jLabelIdentificacao = new javax.swing.JLabel();
         jLabelNome = new javax.swing.JLabel();
-        jLabelNumero = new javax.swing.JLabel();
+        jLabelCNPJ = new javax.swing.JLabel();
         jTextFieldIdentificacao = new javax.swing.JTextField();
         jTextFieldNome = new javax.swing.JTextField();
-        jTextFieldNumero = new javax.swing.JTextField();
+        jTextFieldCNPJ = new javax.swing.JTextField();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         jButtonVoltar = new javax.swing.JButton();
         jButtonCadastrar = new javax.swing.JButton();
@@ -39,14 +39,15 @@ public class GUICadastroDeDepartamento extends javax.swing.JFrame {
         jButtonDesligar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Departamento");
 
-        jLayeredPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLayeredPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabelIdentificacao.setText("Identificação");
+        jLabelIdentificacao.setText("Identificação:");
 
-        jLabelNome.setText("Nome");
+        jLabelNome.setText("Nome:");
 
-        jLabelNumero.setText("Número");
+        jLabelCNPJ.setText("CNPJ:");
 
         jTextFieldIdentificacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,10 +57,10 @@ public class GUICadastroDeDepartamento extends javax.swing.JFrame {
 
         jLayeredPane1.setLayer(jLabelIdentificacao, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jLabelNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabelNumero, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jLabelCNPJ, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jTextFieldIdentificacao, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jTextFieldNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jTextFieldNumero, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jTextFieldCNPJ, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -70,10 +71,10 @@ public class GUICadastroDeDepartamento extends javax.swing.JFrame {
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelIdentificacao)
                     .addComponent(jLabelNome)
-                    .addComponent(jLabelNumero))
+                    .addComponent(jLabelCNPJ))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldNumero)
+                    .addComponent(jTextFieldCNPJ)
                     .addComponent(jTextFieldNome)
                     .addComponent(jTextFieldIdentificacao))
                 .addContainerGap())
@@ -91,12 +92,12 @@ public class GUICadastroDeDepartamento extends javax.swing.JFrame {
                     .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNumero)
-                    .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelCNPJ)
+                    .addComponent(jTextFieldCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLayeredPane2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLayeredPane2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jButtonVoltar.setText("Voltar");
         jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -210,7 +211,7 @@ public class GUICadastroDeDepartamento extends javax.swing.JFrame {
         try {      
             objDepartamento.setIdDepartamento(this.jTextFieldIdentificacao.getText());
             objDepartamento.setNome(this.jTextFieldNome.getText());
-            objDepartamento.setCNPJ(Integer.parseInt(this.jTextFieldNumero.getText()));
+            objDepartamento.setCNPJ(this.jTextFieldCNPJ.getText());
                
                       
             /*if (servicesDepartamento.verificarCNPJ(objDepartamento.getCNPJ()) == null){
@@ -233,7 +234,7 @@ public class GUICadastroDeDepartamento extends javax.swing.JFrame {
             
             jTextFieldIdentificacao.setText(null);
             jTextFieldNome.setText(null);
-            jTextFieldNumero.setText(null);
+            jTextFieldCNPJ.setText(null);
             jTextFieldIdentificacao.grabFocus();
 
         } catch (Exception e) {
@@ -242,7 +243,7 @@ public class GUICadastroDeDepartamento extends javax.swing.JFrame {
             
             jTextFieldIdentificacao.setText(null);
             jTextFieldNome.setText(null);
-            jTextFieldNumero.setText(null);
+            jTextFieldCNPJ.setText(null);
             jTextFieldIdentificacao.grabFocus();
         }
 
@@ -267,7 +268,7 @@ public class GUICadastroDeDepartamento extends javax.swing.JFrame {
         //limpa
         jTextFieldIdentificacao.setText(null);
         jTextFieldNome.setText(null);
-        jTextFieldNumero.setText(null);
+        jTextFieldCNPJ.setText(null);
         jTextFieldIdentificacao.grabFocus();
         
     }//GEN-LAST:event_jButtonLimparActionPerformed
@@ -282,13 +283,13 @@ public class GUICadastroDeDepartamento extends javax.swing.JFrame {
     private javax.swing.JButton jButtonLimpar;
     private javax.swing.JButton jButtonLista;
     private javax.swing.JButton jButtonVoltar;
+    private javax.swing.JLabel jLabelCNPJ;
     private javax.swing.JLabel jLabelIdentificacao;
     private javax.swing.JLabel jLabelNome;
-    private javax.swing.JLabel jLabelNumero;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
+    private javax.swing.JTextField jTextFieldCNPJ;
     private javax.swing.JTextField jTextFieldIdentificacao;
     private javax.swing.JTextField jTextFieldNome;
-    private javax.swing.JTextField jTextFieldNumero;
     // End of variables declaration//GEN-END:variables
 }

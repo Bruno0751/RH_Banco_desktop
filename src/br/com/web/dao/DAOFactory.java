@@ -8,14 +8,14 @@ package br.com.web.dao;
  */
 public class DAOFactory {
     
-    //private static DAOEmpregado daoEmpregado = new DAOEmpregado();
+    private static DAOFuncionario daoFuncionario = new DAOFuncionario();
     //private static GerenteDAO gerenteDAO = new GerenteDAO();
     private static DAODepartamento daoDepartamento = new DAODepartamento();
     
     
-    //public static DAOEmpregado getDAOEmpregados(){
-    //    return daoEmpregado;
-    //}
+    public static DAOFuncionario getDAOFuncionario(){
+        return daoFuncionario;
+    }
     
     //public static GerenteDAO getGerentesDAO(){
     //    return gerenteDAO;

@@ -187,9 +187,9 @@ public class ServicesDepartamento {
     
     
     
-    public Departamento verificarCNPJ(int cnpj){
+    public Departamento verificarCNPJ(String cnpj){
         for(int i = 0;i < this.listaDeDepartamentos.size();i++){
-            if(this.listaDeDepartamentos.get(i).getCNPJ() == cnpj){
+            if(this.listaDeDepartamentos.get(i).getCNPJ().equals(cnpj)){
                 return this.listaDeDepartamentos.get(i);
             }
         }

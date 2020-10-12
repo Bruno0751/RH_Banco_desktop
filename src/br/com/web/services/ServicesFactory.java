@@ -1,6 +1,7 @@
 //PROJECT NAME: prjRHBanco
 package br.com.web.services;
 import br.com.web.view.GUICadastroDeDepartamento;
+import br.com.web.view.GUICadastroDeFuncionario;
 import br.com.web.view.GUIManutencaoDeDepartamento;
 import br.com.web.view.Menu;
 /**
@@ -15,9 +16,6 @@ public class ServicesFactory {
     //private static final GerenteServicos GERENTEBO = new GerenteServicos();
     private static final ServicesDepartamento DEPARTAMENTOBO = new ServicesDepartamento();
 
-    public void abrirDCadastroDeDepartamento(){
-        new GUICadastroDeDepartamento().setVisible(true);
-    }
     
     public void desligarSistema(){
         System.exit(0);
@@ -39,6 +37,7 @@ public class ServicesFactory {
     //    return EMPREGADOBO;
     //}
     
+    //ESTE METODO É APENAS PARA MANUTENCAO DA TABELA
     public static ServicesDepartamento getDepartamentosServicos(){
         return DEPARTAMENTOBO;
     }
@@ -46,4 +45,8 @@ public class ServicesFactory {
     //public static GerenteServicos getGerentesServicos(){
     //    return GERENTEBO;
     //}
+
+    public void abrirCadastroDeFuncionario() {
+        new GUICadastroDeFuncionario().setVisible(true);
+    }
 }

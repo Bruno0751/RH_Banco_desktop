@@ -9,7 +9,7 @@ package br.com.web.model;
 public class Departamento  {
     
     private String idDepartamento;
-    private int cnpj;
+    private String cnpj;
     private String nome;
 
     public String getIdDepartamento() {
@@ -20,11 +20,11 @@ public class Departamento  {
         this.idDepartamento = idDepartamento;
     }
     
-    public int getCNPJ() {
+    public String getCNPJ() {
         return cnpj;
     }
 
-    public void setCNPJ(int cnpj) {
+    public void setCNPJ(String cnpj) {
         this.cnpj = cnpj;
     }
 

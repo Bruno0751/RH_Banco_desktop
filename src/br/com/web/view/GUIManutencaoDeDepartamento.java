@@ -54,6 +54,7 @@ public class GUIManutencaoDeDepartamento extends javax.swing.JFrame {
         jButtonAlterar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Manutenção de Departamento");
 
         jTableDepartamento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -571,7 +572,7 @@ public class GUIManutencaoDeDepartamento extends javax.swing.JFrame {
             }else{
                 objDepartamento.setIdDepartamento(jTextFieldIDDepartamento.getText());
                 objDepartamento.setNome(jTextFieldNomeDepartamento.getText());
-                objDepartamento.setCNPJ(Integer.parseInt(jTextFieldNumeroDepartamento.getText()));
+                objDepartamento.setCNPJ(jTextFieldNumeroDepartamento.getText());
 
                 ServicesDepartamento servicesDepartamento = br.com.web.services.ServicesFactory.getDepartamentosServicos();
 

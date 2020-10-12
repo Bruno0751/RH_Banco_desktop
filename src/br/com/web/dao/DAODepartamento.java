@@ -59,7 +59,7 @@ public class DAODepartamento {
                 
                 departamento.setIdDepartamento(rs.getString("id_departamento"));
                 departamento.setNome(rs.getString("nome"));
-                departamento.setCNPJ(rs.getInt("cnpj"));
+                departamento.setCNPJ(rs.getString("cnpj"));
                 
                 listaDeDepartamentos.add(departamento);
             }
@@ -129,7 +129,7 @@ public class DAODepartamento {
                 
                 departamento.setIdDepartamento(resultado.getString("id_departamento"));
                 departamento.setNome(resultado.getString("nome"));
-                departamento.setCNPJ(resultado.getInt("cnpj"));
+                departamento.setCNPJ(resultado.getString("cnpj"));
                 
                 listaDeDepartamentos.add(departamento);
             }
