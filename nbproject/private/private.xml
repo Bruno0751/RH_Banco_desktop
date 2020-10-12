@@ -3,7 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/PrjDesktopJava/RHBANCO/src/br/com/web/model/Empregado.java</file>
+            <file>file:/D:/PrjDesktopJava/RH_Banco_Java_desktop/src/br/com/web/persistence/Conexao.java</file>
+            <file>file:/D:/PrjDesktopJava/RH_Banco_Java_desktop/src/br/com/web/dao/DAODepartamento.java</file>
         </group>
     </open-files>
 </project-private>

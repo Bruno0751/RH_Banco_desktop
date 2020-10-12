@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Bruno Gressler da Silveira
- * @version 2
+ * @version 2.0
  * @since 09/01/2020
  */
 public class GUIManutencaoDeDepartamento extends javax.swing.JFrame {

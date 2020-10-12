@@ -4,7 +4,7 @@ import br.com.web.services.ServicesFactory;
 /**
  *
  * @author Bruno Gressler da Silveira
- * @version 2
+ * @version 2.0
  * @since 09/01/2020
  */
 public class Menu extends javax.swing.JFrame {
