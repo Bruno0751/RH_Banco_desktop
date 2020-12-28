@@ -1,6 +1,6 @@
 //PROJECT NAME: prjRHBanco
-package br.com.web.view;
-import br.com.web.services.ServicesFactory;
+package view;
+import services.ServicesFactory;
 import javax.swing.JOptionPane;
 /**
  *
@@ -29,6 +29,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuItemCadastrarFuncionario = new javax.swing.JMenuItem();
         jMenuManutencao = new javax.swing.JMenu();
         jMenuItemManutencaoDepartamento = new javax.swing.JMenuItem();
+        jMenuItemManutencaoFuncionario = new javax.swing.JMenuItem();
         jMenuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -74,6 +75,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jMenuManutencao.add(jMenuItemManutencaoDepartamento);
+
+        jMenuItemManutencaoFuncionario.setText("Funcionário");
+        jMenuItemManutencaoFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemManutencaoFuncionarioActionPerformed(evt);
+            }
+        });
+        jMenuManutencao.add(jMenuItemManutencaoFuncionario);
 
         jMenuBarPrincipal.add(jMenuManutencao);
 
@@ -123,43 +132,26 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMenuItemManutencaoDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemManutencaoDepartamentoActionPerformed
        
-        servicesFactory.abrirManutencaoDeDepartamento();
+        servicesFactory.abrirManutencaoDepartamento();
         this.dispose();
         
     }//GEN-LAST:event_jMenuItemManutencaoDepartamentoActionPerformed
 
+    private void jMenuItemManutencaoFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemManutencaoFuncionarioActionPerformed
+        
+        //servicesFactory.abrirManutencaoFuncionario();
+        //this.dispose();
+        JOptionPane.showMessageDialog(null, "Em Breve", "MENSSAGEM", JOptionPane.INFORMATION_MESSAGE);
+        
+    }//GEN-LAST:event_jMenuItemManutencaoFuncionarioActionPerformed
+
     private void jMenuItemCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastrarFuncionarioActionPerformed
         
-        JOptionPane.showMessageDialog(null, "Coming Soon", "Register", JOptionPane.INFORMATION_MESSAGE);
-        //servicesFactory.abrirCadastroDeFuncionario();
-        //this.dispose();
+        servicesFactory.abrirCadastroDeFuncionario();
+        this.dispose();
+        //JOptionPane.showMessageDialog(null, "Em Breve", "MENSSAGEM", JOptionPane.INFORMATION_MESSAGE);
         
     }//GEN-LAST:event_jMenuItemCadastrarFuncionarioActionPerformed
-
-    /*private void CadastrarFruta(){
-        try {
-            Tabela tabela = new Tabela();
-            
-            tabela.setNome(jtNome.getText());
-            tabela.setValorCusto(Double.parseDouble(jtValor.getText()));
-            tabela.setQuantidade(Integer.parseInt(jtQuantidade.getText()));
-              
-            FrutasServicos fs = servicos.ServicosFactory.getFrutasServicos();
-            
-            fs.insertFrutas(fVO);
-            
-            JOptionPane.showMessageDialog(
-                    rootPane,
-                    "Fruta Cadastrada");
-            limpar();
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,
-                    "Erro GUICadastro Fruta " + e.getMessage(),
-                    "ERRO",
-                    JOptionPane.ERROR_MESSAGE);
-        }
-    }*/
     
     public static void main(String args[]) {
         
@@ -203,6 +195,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemCadastrarDepartamento;
     private javax.swing.JMenuItem jMenuItemCadastrarFuncionario;
     private javax.swing.JMenuItem jMenuItemManutencaoDepartamento;
+    private javax.swing.JMenuItem jMenuItemManutencaoFuncionario;
     private javax.swing.JMenu jMenuManutencao;
     private javax.swing.JMenu jMenuSair;
     // End of variables declaration//GEN-END:variables

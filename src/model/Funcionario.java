@@ -1,8 +1,8 @@
-package br.com.web.model;
+package model;
 /**
  *
  * @author Bruno Gressler da Silveira
- * @version 2
+ * @version 2.0
  * @since 12/10/2020
  */
 public class Funcionario {
@@ -10,7 +10,7 @@ public class Funcionario {
     private String s_idFuncionario;
     private String s_cpf;
     private String s_nome;
-    private String s_idGerente;
+    private String s_idDepartamento;
 
     public String getS_idFuncionario() {
         return s_idFuncionario;
@@ -36,12 +36,12 @@ public class Funcionario {
         this.s_nome = s_nome;
     }
 
-    public String getS_idGerente() {
-        return s_idGerente;
+    public String getS_idDepartamento() {
+        return s_idDepartamento;
     }
 
-    public void setS_idGerente(String s_idGerente) {
-        this.s_idGerente = s_idGerente;
+    public void setS_idDepartamento(String s_idDepartamento) {
+        this.s_idDepartamento = s_idDepartamento;
     }
     
     

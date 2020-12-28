@@ -1,14 +1,13 @@
-package br.com.web.view;
+package view;
 
-import br.com.web.model.Funcionario;
-import br.com.web.services.ServicesFactory;
-import br.com.web.services.ServicesFuncionario;
+import model.Funcionario;
+import services.ServicesFactory;
+import services.ServicesFuncionario;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author Bruno Gressler da Silveira
- * @version 2
+ * @version 2.0
  * @since 12/10/2020
  */
 public class GUICadastroDeFuncionario extends javax.swing.JFrame {
@@ -32,8 +31,8 @@ public class GUICadastroDeFuncionario extends javax.swing.JFrame {
         jLabelCPF = new javax.swing.JLabel();
         jTextFieldNome = new javax.swing.JTextField();
         jTextFieldCPF = new javax.swing.JTextField();
-        jLabelGerente = new javax.swing.JLabel();
-        jTextFieldGerente = new javax.swing.JTextField();
+        jLabelFKDepartamento = new javax.swing.JLabel();
+        jTextFieldFKDepartamento = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jButtonVoltar = new javax.swing.JButton();
         jButtonLista = new javax.swing.JButton();
@@ -52,7 +51,7 @@ public class GUICadastroDeFuncionario extends javax.swing.JFrame {
 
         jLabelCPF.setText("cpf:");
 
-        jLabelGerente.setText("Gerente:");
+        jLabelFKDepartamento.setText("Departamento");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -64,13 +63,13 @@ public class GUICadastroDeFuncionario extends javax.swing.JFrame {
                     .addComponent(jLabelIdentificacao)
                     .addComponent(jLabelNome)
                     .addComponent(jLabelCPF)
-                    .addComponent(jLabelGerente))
+                    .addComponent(jLabelFKDepartamento))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldCPF, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                    .addComponent(jTextFieldCPF, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
                     .addComponent(jTextFieldNome)
                     .addComponent(jTextFieldIdentificacao)
-                    .addComponent(jTextFieldGerente))
+                    .addComponent(jTextFieldFKDepartamento))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -90,8 +89,8 @@ public class GUICadastroDeFuncionario extends javax.swing.JFrame {
                     .addComponent(jTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelGerente)
-                    .addComponent(jTextFieldGerente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelFKDepartamento)
+                    .addComponent(jTextFieldFKDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -193,10 +192,8 @@ public class GUICadastroDeFuncionario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
-        
         servicesFactory.abirMenuPrincipal();
-        this.dispose();
-        
+        this.dispose();        
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
@@ -205,68 +202,22 @@ public class GUICadastroDeFuncionario extends javax.swing.JFrame {
         jTextFieldIdentificacao.setText(null);
         jTextFieldNome.setText(null);
         jTextFieldCPF.setText(null);
-        jTextFieldGerente.setText(null);
+        jTextFieldFKDepartamento.setText(null);
         jTextFieldIdentificacao.grabFocus();
         
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
     private void jButtonListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaActionPerformed
-        
-        JOptionPane.showMessageDialog(null, "Coming Soon");
-        
+        JOptionPane.showMessageDialog(null, "Em Breve", "MENSSAGEM", JOptionPane.INFORMATION_MESSAGE);        
     }//GEN-LAST:event_jButtonListaActionPerformed
 
     private void jButtonDesligarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDesligarActionPerformed
-        
         servicesFactory.desligarSistema();
-        this.dispose();
-        
+        this.dispose();        
     }//GEN-LAST:event_jButtonDesligarActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        
-        try {      
-            objFuncionario.setS_idFuncionario(this.jTextFieldIdentificacao.getText());
-            objFuncionario.setS_nome(this.jTextFieldNome.getText());
-            objFuncionario.setS_cpf(this.jTextFieldCPF.getText());
-            objFuncionario.setS_cpf(this.jTextFieldGerente.getText());
-               
-                      
-            /*if (servicesDepartamento.verificarCNPJ(objDepartamento.getCNPJ()) == null){
-                JOptionPane.showMessageDialog(null, "CNPJ Inválida", "ERRO", JOptionPane.ERROR_MESSAGE);
-            }else{
-                ServicesDepartamento servicesDepartamento = br.com.web.services.
-                        ServicesFactory.getDepartamentosServicos();
-                servicesDepartamento.cadastrarDepartamento(objDepartamento);
-                JOptionPane.showMessageDialog(null, "Departamento Cadastrado");
-                
-                servicesDepartamento.cadastrarDepartamento(objDepartamento);
-            
-                JOptionPane.showMessageDialog(rootPane,"Departamento Cadastrada");
-            }*/
-
-            servicesFuncionario.cadastrarFuncionario(objFuncionario);
-            
-            JOptionPane.showMessageDialog(rootPane,"Funcionario Cadastrada");
-            
-            
-            jTextFieldIdentificacao.setText(null);
-            jTextFieldNome.setText(null);
-            jTextFieldCPF.setText(null);
-            jTextFieldGerente.setText(null);
-            jTextFieldIdentificacao.grabFocus();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro Ao Cadastrar Funcionario "
-                    + e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
-            
-            jTextFieldIdentificacao.setText(null);
-            jTextFieldNome.setText(null);
-            jTextFieldCPF.setText(null);
-            jTextFieldGerente.setText(null);
-            jTextFieldIdentificacao.grabFocus();
-        }
-        
+        servicesFuncionario.cadastrarFuncionario(jTextFieldIdentificacao, jTextFieldNome, jTextFieldCPF, jTextFieldFKDepartamento);
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
 
@@ -277,13 +228,13 @@ public class GUICadastroDeFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton jButtonLista;
     private javax.swing.JButton jButtonVoltar;
     private javax.swing.JLabel jLabelCPF;
-    private javax.swing.JLabel jLabelGerente;
+    private javax.swing.JLabel jLabelFKDepartamento;
     private javax.swing.JLabel jLabelIdentificacao;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextFieldCPF;
-    private javax.swing.JTextField jTextFieldGerente;
+    private javax.swing.JTextField jTextFieldFKDepartamento;
     private javax.swing.JTextField jTextFieldIdentificacao;
     private javax.swing.JTextField jTextFieldNome;
     // End of variables declaration//GEN-END:variables

@@ -1,15 +1,16 @@
 //PROJECT NAME: prjRHBanco
-package br.com.web.services;
+package services;
 
-import br.com.web.dao.DAODepartamento;
-import br.com.web.dao.DAOFactory;
-import br.com.web.model.Departamento;
-
+import dao.DAODepartamento;
+import dao.DAOFactory;
+import java.awt.HeadlessException;
+import model.Departamento;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -19,8 +20,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ServicesDepartamento {
 
-    private Departamento objDepartamento;
-    private ArrayList<Departamento> listaDeDepartamentos;
+    private final Departamento objDepartamento;
+    private final ArrayList<Departamento> listaDeDepartamentos;
     
 
     public ServicesDepartamento() {
@@ -28,27 +29,70 @@ public class ServicesDepartamento {
         this.objDepartamento = new Departamento();
     }
 
-    
-    /*
-    public void selecionandoONumeroDeDepartamentos() throws SQLException {
+    private void cadastrandoDepartamento(Departamento departamento) throws SQLException{
         DAODepartamento daoDepartamento = DAOFactory.getDAODepartamento();
-        daoDepartamento.selecionandoONumeroDeDepartamentos();
+        daoDepartamento.cadastrarDepartamentos(departamento);
     }
-    */
- 
-    public ArrayList<Departamento> buscarDepartamento() throws SQLException {
+    
+    private ArrayList<Departamento> filtrandoDepartamento(String query) throws SQLException {
+        DAODepartamento daoDepartamento = DAOFactory.getDAODepartamento();
+        return daoDepartamento.filtrarDepartamentos(query);
+    }
+    
+    private void deletandoDepartamento(String id) throws SQLException {
+      DAODepartamento daoDepartamento = DAOFactory.getDAODepartamento();
+      daoDepartamento.deletarDepartamento(id);
+    }
+    
+    private ArrayList<Departamento> buscandoDepartamento() throws SQLException {
         DAODepartamento daoDepartamento = DAOFactory.getDAODepartamento();
         return daoDepartamento.buscarDepartamentos();
     }
+    
+    
+    public void cadastrarDepartamento(JTextField id, JTextField nome, JTextField cnpj){
+        try {      
+            objDepartamento.setIdDepartamento(id.getText());
+            objDepartamento.setNome(nome.getText());
+            objDepartamento.setCNPJ(Integer.parseInt(cnpj.getText()));
+                      
+            //if (verificarCNPJ(objDepartamento.getCNPJ()) != null){
+            //    JOptionPane.showMessageDialog(null, "CNPJ Inválida", "ERRO", JOptionPane.ERROR_MESSAGE);
+            //    cnpj.setText(null);
+            //    cnpj.grabFocus();
+            //}
+            //else if(verificarCNPJ(objDepartamento.getCNPJ()) == null){
+                ServicesDepartamento servicesDepartamento = services.ServicesFactory.getDepartamentosServicos();
+                cadastrandoDepartamento(objDepartamento);
+                JOptionPane.showMessageDialog(null, "Departamento Cadastrado");
+                
+                cadastrandoDepartamento(objDepartamento);
+            
+                JOptionPane.showMessageDialog(null,"Departamento Cadastrada");
+                id.setText(null);
+                nome.setText(null);
+                cnpj.setText(null);
+                id.grabFocus();
+            //}
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro Ao Cadastrar Departamento "
+                    + e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
+            
+            id.setText(null);
+            nome.setText(null);
+            cnpj.setText(null);
+            id.grabFocus();
+        }  
+    }
    
-    public void atualizaTabela(DefaultTableModel defaultTableModel, JTable tabela) {
+    public void atualizandoTabela(DefaultTableModel defaultTableModel, JTable tabela) {
         try {
                 
             ServicesDepartamento servicesDepartamento = ServicesFactory.getDepartamentosServicos();
             
             ArrayList<Departamento> listaDepartamentos = new ArrayList<>();
             
-            listaDepartamentos = servicesDepartamento.buscarDepartamento();
+            listaDepartamentos = servicesDepartamento.buscandoDepartamento();
 
             for (int i = 0; i < listaDepartamentos.size(); i++) {
                 defaultTableModel.addRow(new String[]{
@@ -70,47 +114,11 @@ public class ServicesDepartamento {
         objDepartamento.setIdDepartamento(null);
         
     }
-    
-    /*
-    public void limparTabela(DefaultTableModel defaultTableModel, String id, String nome, String numero){
-        defaultTableModel.setNumRows(0);
-        id = null;
-        nome = null;
-        numero = null;
-    }
-    
-    public void cadastrarDepartamento(String id, String nome, int cnpj) {
-        try {      
-            objDepartamento.setIdDepartamento(id);
-            objDepartamento.setNome(nome);
-            objDepartamento.setCNPJ(cnpj);
-                    
-            //setVerificaCNPJ(verificarCNPJ(cnpj));
-                      
-            //if (getVerificaCNPJ() == null){
-            //    JOptionPane.showMessageDialog(null, "CNPJ Inválida", "ERRO", JOptionPane.ERROR_MESSAGE);
-            //}else{
-            //    ServicesDepartamento servicesDepartamento = br.com.web.services.ServicesFactory.getDepartamentosServicos();
-            //    servicesDepartamento.cadastrarDepartamento(objDepartamento);
-            //    JOptionPane.showMessageDialog(null, "Departamento Cadastrado");
-            //}
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro Ao Cadastrar Departamento " + e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-*/
-    
-    public void cadastrarDepartamento(Departamento departamento) throws SQLException{
-        DAODepartamento daoDepartamento = DAOFactory.getDAODepartamento();
-        daoDepartamento.cadastrarDepartamentos(departamento);
-    }
-    
 
-    
     public void filtrarDepartamento(String pesquisa, DefaultTableModel defaultTableModel, JTable tabela, JComboBox filtro){
        try {
            if (pesquisa.isEmpty()){
-               atualizaTabela(defaultTableModel, tabela);
+               atualizandoTabela(defaultTableModel, tabela);
            } else{
                 String pesq = pesquisa;
                 String filt = filtro.getSelectedItem().toString();
@@ -123,7 +131,7 @@ public class ServicesDepartamento {
                     query = "WHERE cnpj LIKE '%" + pesq + "%'";
                 }
                 ServicesDepartamento ServicesDepartamento = ServicesFactory.getDepartamentosServicos();
-                ArrayList<Departamento> listaDepartamentos = ServicesDepartamento.filtrarDepartamento(query);
+                ArrayList<Departamento> listaDepartamentos = ServicesDepartamento.filtrandoDepartamento(query);
                 
                 for (int i = 0 ; i < listaDepartamentos.size() ; i ++){
                     defaultTableModel.addRow(new String[]{
@@ -143,15 +151,8 @@ public class ServicesDepartamento {
                     "ERRO",
                     JOptionPane.ERROR_MESSAGE);
         }
-    }
-    
-    protected ArrayList<Departamento> filtrarDepartamento(String query) throws SQLException {
-        DAODepartamento daoDepartamento = DAOFactory.getDAODepartamento();
-        return daoDepartamento.filtrarDepartamentos(query);
-    }
-    
-    
-    
+    }    
+
     public void deletarDepartamento(JTable tabela, String id){
        try {
            int linha = tabela.getSelectedRow();
@@ -160,7 +161,7 @@ public class ServicesDepartamento {
            } else{
                String identification = tabela.getValueAt(linha, 0).toString();
                ServicesDepartamento servicesDepartamento = ServicesFactory.getDepartamentosServicos();
-               servicesDepartamento.deletarDepartamento(id);
+               deletandoDepartamento(id);
                
                JOptionPane.showMessageDialog(null, "Departamento Deletado");
            }
@@ -171,25 +172,16 @@ public class ServicesDepartamento {
         }   
         id = null;
         
-    }
+    }    
     
-    protected void deletarDepartamento(String id) throws SQLException {
-      DAODepartamento daoDepartamento = DAOFactory.getDAODepartamento();
-      daoDepartamento.deletarDepartamento(id);
-    }
-    
-    
-
-    public void alterarDepartamentos(Departamento departamento) throws SQLException {
+    public void alterarDepartamento(Departamento departamento) throws SQLException {
         DAODepartamento daoDepartamento = DAOFactory.getDAODepartamento();
         daoDepartamento.atualizarDepartamentos(departamento);
     }    
     
-    
-    
-    public Departamento verificarCNPJ(String cnpj){
+    public Departamento verificarCNPJ(int cnpj){
         for(int i = 0;i < this.listaDeDepartamentos.size();i++){
-            if(this.listaDeDepartamentos.get(i).getCNPJ().equals(cnpj)){
+            if(this.listaDeDepartamentos.get(i).getCNPJ() == cnpj){
                 return this.listaDeDepartamentos.get(i);
             }
         }

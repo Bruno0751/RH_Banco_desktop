@@ -1,7 +1,7 @@
 //PROJECT NAME: prjRHBanco
-package br.com.web.dao;
-import br.com.web.model.Departamento;
-import br.com.web.persistence.Conexao;
+package dao;
+import model.Departamento;
+import persistence.Conexao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -59,7 +59,7 @@ public class DAODepartamento {
                 
                 departamento.setIdDepartamento(rs.getString("id_departamento"));
                 departamento.setNome(rs.getString("nome"));
-                departamento.setCNPJ(rs.getString("cnpj"));
+                departamento.setCNPJ(rs.getInt("cnpj"));
                 
                 listaDeDepartamentos.add(departamento);
             }
@@ -129,7 +129,7 @@ public class DAODepartamento {
                 
                 departamento.setIdDepartamento(resultado.getString("id_departamento"));
                 departamento.setNome(resultado.getString("nome"));
-                departamento.setCNPJ(resultado.getString("cnpj"));
+                departamento.setCNPJ(resultado.getInt("cnpj"));
                 
                 listaDeDepartamentos.add(departamento);
             }
@@ -145,42 +145,5 @@ public class DAODepartamento {
         }
         
     }
-    
-    /*
-    public void selecionandoONumeroDeDepartamentos() throws SQLException{
-        Connection connection = Conexao.getConexao();
-        Statement statement = connection.createStatement();
-        //try {
-            String sql;
-          
-            sql = "SELECT SUM(id_departamento) FROM departamento";
-            
-            ResultSet resultado = statement.executeQuery(sql);
-            //ArrayList<Departamento> listaDeDepartamentos = new ArrayList<>();
-
-            
-            //while (resultado.next()) {
-                
-            //    Departamento departamento = new Departamento();
-                
-            //    departamento.setIdDepartamento(resultado.getString("id_departamento"));
-            //    departamento.setNome(resultado.getString("nome"));
-            //    departamento.setNumero(resultado.getInt("numero"));
-                
-            //    listaDeDepartamentos.add(departamento);
-            //}
-            
-            statement.executeQuery(sql);
-        //} catch (SQLException e) {
-        //    throw new SQLException("Erro ao Somar Departamentos \n"
-        //        + "Erro de Software no SQL \n\n"
-        //        + "Tipo: " + e.getMessage());
-        //} finally {
-            //connection.close();
-            //statement.close();
-        //}
-    }
-    /*SELECT SUM(id_departamento)
-    FOM departamento;*/
     
 }

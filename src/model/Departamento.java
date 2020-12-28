@@ -1,5 +1,5 @@
 //PROJECT NAME: prjRHBanco
-package br.com.web.model;
+package model;
 /**
  *
  * @author Bruno Gressler da Silveira
@@ -9,7 +9,7 @@ package br.com.web.model;
 public class Departamento  {
     
     private String idDepartamento;
-    private String cnpj;
+    private int cnpj;
     private String nome;
 
     public String getIdDepartamento() {
@@ -20,11 +20,11 @@ public class Departamento  {
         this.idDepartamento = idDepartamento;
     }
     
-    public String getCNPJ() {
+    public int getCNPJ() {
         return cnpj;
     }
 
-    public void setCNPJ(String cnpj) {
+    public void setCNPJ(int cnpj) {
         this.cnpj = cnpj;
     }
 

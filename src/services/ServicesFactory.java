@@ -1,9 +1,11 @@
 //PROJECT NAME: prjRHBanco
-package br.com.web.services;
-import br.com.web.view.GUICadastroDeDepartamento;
-import br.com.web.view.GUICadastroDeFuncionario;
-import br.com.web.view.GUIManutencaoDeDepartamento;
-import br.com.web.view.Menu;
+package services;
+
+import view.GUICadastroDeDepartamento;
+import view.GUICadastroDeFuncionario;
+import view.GUIManutencaoDeDepartamento;
+import view.GUIManutencaoFuncionario;
+import view.Menu;
 /**
  *
  * @author Bruno Gressler da Silveira
@@ -12,7 +14,7 @@ import br.com.web.view.Menu;
  */
 public class ServicesFactory {
     
-    //private static final EmpregadoServicos EMPREGADOBO = new EmpregadoServicos();
+    private static final ServicesFuncionario FUNCIONARIOBO = new ServicesFuncionario();
     //private static final GerenteServicos GERENTEBO = new GerenteServicos();
     private static final ServicesDepartamento DEPARTAMENTOBO = new ServicesDepartamento();
 
@@ -25,17 +27,25 @@ public class ServicesFactory {
         new GUICadastroDeDepartamento().setVisible(true);
     }
      
+    public void abrirCadastroDeFuncionario() {
+        new GUICadastroDeFuncionario().setVisible(true);
+    }
+    
     public void abirMenuPrincipal(){
         new Menu().setVisible(true);
     }
     
-    public void abrirManutencaoDeDepartamento(){
+    public void abrirManutencaoDepartamento(){
         new GUIManutencaoDeDepartamento().setVisible(true);
     }
     
-    //public static EmpregadoServicos getEmpregadosServicos(){
-    //    return EMPREGADOBO;
-    //}
+    public void abrirManutencaoFuncionario(){
+        new GUIManutencaoFuncionario().setVisible(true);
+    }
+    
+    public static ServicesFuncionario getFuncionariosServicos(){
+        return FUNCIONARIOBO;
+    }
     
     //ESTE METODO É APENAS PARA MANUTENCAO DA TABELA
     public static ServicesDepartamento getDepartamentosServicos(){
@@ -46,7 +56,5 @@ public class ServicesFactory {
     //    return GERENTEBO;
     //}
 
-    public void abrirCadastroDeFuncionario() {
-        new GUICadastroDeFuncionario().setVisible(true);
-    }
+    
 }

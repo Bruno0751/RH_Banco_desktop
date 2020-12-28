@@ -1,11 +1,9 @@
 //PROJECT NAME: prjRHBanco
-package br.com.web.view;
-import br.com.web.model.Departamento;
-import br.com.web.services.ServicesDepartamento;
-import br.com.web.services.ServicesFactory;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+package view;
+
+import model.Departamento;
+import services.ServicesDepartamento;
+import services.ServicesFactory;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -26,9 +24,7 @@ public class GUIManutencaoDeDepartamento extends javax.swing.JFrame {
     
     public GUIManutencaoDeDepartamento() {
         initComponents();
-        //atualizaTabela();
-        servicesDepartamento.atualizaTabela(this.defaultTableModel, this.jTableDepartamento);
-        
+        servicesDepartamento.atualizandoTabela(this.defaultTableModel, this.jTableDepartamento);        
     }
 
     @SuppressWarnings("unchecked")
@@ -43,7 +39,7 @@ public class GUIManutencaoDeDepartamento extends javax.swing.JFrame {
         jLayeredPane2 = new javax.swing.JLayeredPane();
         jTextFieldIDDepartamento = new javax.swing.JTextField();
         jTextFieldNomeDepartamento = new javax.swing.JTextField();
-        jTextFieldNumeroDepartamento = new javax.swing.JTextField();
+        jTextFieldCNPJDepartamento = new javax.swing.JTextField();
         jLayeredPane3 = new javax.swing.JLayeredPane();
         jButtonCadastrar = new javax.swing.JButton();
         jButtonVoltar = new javax.swing.JButton();
@@ -141,7 +137,7 @@ public class GUIManutencaoDeDepartamento extends javax.swing.JFrame {
 
         jLayeredPane2.setLayer(jTextFieldIDDepartamento, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane2.setLayer(jTextFieldNomeDepartamento, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(jTextFieldNumeroDepartamento, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(jTextFieldCNPJDepartamento, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane2Layout = new javax.swing.GroupLayout(jLayeredPane2);
         jLayeredPane2.setLayout(jLayeredPane2Layout);
@@ -152,7 +148,7 @@ public class GUIManutencaoDeDepartamento extends javax.swing.JFrame {
                 .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldIDDepartamento)
                     .addComponent(jTextFieldNomeDepartamento)
-                    .addComponent(jTextFieldNumeroDepartamento))
+                    .addComponent(jTextFieldCNPJDepartamento))
                 .addContainerGap())
         );
         jLayeredPane2Layout.setVerticalGroup(
@@ -162,7 +158,7 @@ public class GUIManutencaoDeDepartamento extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextFieldNomeDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextFieldNumeroDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldCNPJDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -230,19 +226,20 @@ public class GUIManutencaoDeDepartamento extends javax.swing.JFrame {
         jLayeredPane3Layout.setHorizontalGroup(
             jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane3Layout.createSequentialGroup()
-                .addContainerGap(151, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButtonCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonDesligar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButtonLimparAlteração)
-                .addGap(18, 18, 18)
+                    .addComponent(jButtonAtualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))
+                .addGap(9, 9, 9)
                 .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonAtualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonDeletar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(132, 132, 132))
+                    .addComponent(jButtonLimparAlteração, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonDesligar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(116, 116, 116))
         );
         jLayeredPane3Layout.setVerticalGroup(
             jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,17 +247,16 @@ public class GUIManutencaoDeDepartamento extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCadastrar)
-                    .addComponent(jButtonAtualizar))
-                .addGap(18, 18, 18)
+                    .addComponent(jButtonAtualizar)
+                    .addComponent(jButtonDesligar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonVoltar)
                     .addComponent(jButtonLimparAlteração)
                     .addComponent(jButtonDeletar))
-                .addGap(18, 18, 18)
-                .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonDesligar)
-                    .addComponent(jButtonAlterar))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonAlterar)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -295,75 +291,52 @@ public class GUIManutencaoDeDepartamento extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void limparTabela(){
+        defaultTableModel.setNumRows(0);
+        jTextFieldIDDepartamento.setText(null);
+        jTextFieldNomeDepartamento.setText(null);
+        jTextFieldCNPJDepartamento.setText(null);
+    }
+    
     private void jButtonDesligarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDesligarActionPerformed
-        
         servicesFactory.desligarSistema();
-        this.dispose();
-        
+        this.dispose();    
     }//GEN-LAST:event_jButtonDesligarActionPerformed
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
-        
         servicesFactory.abirMenuPrincipal();
-        this.dispose();
-        
+        this.dispose();       
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        
         servicesFactory.abrirCadastroDeDepartamento();
-        this.dispose();
-        
+        this.dispose();        
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jTableDepartamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableDepartamentoMouseClicked
-        
-        //servicesDepartamento.alterarDepartamento(this.jTableDepartamento, this.jTextFieldIDDepartamento.getText(), this.jTextFieldNomeDepartamento.getText(), this.jTextFieldNumeroDepartamento.getText());
-        
         alterarDepartamento();
     }//GEN-LAST:event_jTableDepartamentoMouseClicked
 
     private void jButtonLimparAlteraçãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparAlteraçãoActionPerformed
-        
-        defaultTableModel.setNumRows(0);
-        jTextFieldIDDepartamento.setText(null);
-        jTextFieldNomeDepartamento.setText(null);
-        jTextFieldNumeroDepartamento.setText(null);
-        
-        //servicesDepartamento.limparTabela(this.defaultTableModel, this.jTextFieldIDDepartamento.getText(), this.jTextFieldNomeDepartamento.getText(), this.jTextFieldNumeroDepartamento.getText());
-        //servicesDepartamento.limparTabela(this.defaultTableModel, this.jTextFieldIDDepartamento, this.jTextFieldNomeDepartamento, this.jTextFieldNumeroDepartamento);
-        
+        limparTabela();      
     }//GEN-LAST:event_jButtonLimparAlteraçãoActionPerformed
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
+        limparTabela();
         
-        defaultTableModel.setNumRows(0);
-        jTextFieldNomeDepartamento.setText(null);
-        jTextFieldNumeroDepartamento.setText(null);
-        
-        //servicesDepartamento.limparTabela(this.defaultTableModel, this.jTextFieldIDDepartamento.getText(), this.jTextFieldNomeDepartamento.getText(), this.jTextFieldNumeroDepartamento.getText());
-        //atualizaTabela();
-        servicesDepartamento.atualizaTabela(this.defaultTableModel, 
+        servicesDepartamento.atualizandoTabela(this.defaultTableModel, 
                 this.jTableDepartamento);
               
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
-        
-        //servicesDepartamento.deletarDepartamento(this.jTableDepartamento, this.jTextFieldIDDepartamento.getText());
         servicesDepartamento.deletarDepartamento(this.jTableDepartamento, 
                 this.jTextFieldIDDepartamento.getText());
         
-        defaultTableModel.setNumRows(0);
-        jTextFieldNomeDepartamento.setText(null);
-        jTextFieldNumeroDepartamento.setText(null);
+        limparTabela();
         
-        //servicesDepartamento.limparTabela(this.defaultTableModel, this.jTextFieldIDDepartamento.getText(), this.jTextFieldNomeDepartamento.getText(), this.jTextFieldNumeroDepartamento.getText());
-        
-        servicesDepartamento.atualizaTabela(this.defaultTableModel, 
-                this.jTableDepartamento);
-        //atualizaTabela();        
-        
+        servicesDepartamento.atualizandoTabela(this.defaultTableModel, 
+                this.jTableDepartamento);            
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
@@ -372,170 +345,35 @@ public class GUIManutencaoDeDepartamento extends javax.swing.JFrame {
         
         defaultTableModel.setNumRows(0);
         jTextFieldNomeDepartamento.setText(null);
-        jTextFieldNumeroDepartamento.setText(null);
+        jTextFieldCNPJDepartamento.setText(null);
         
-        //servicesDepartamento.limparTabela(this.defaultTableModel, this.jTextFieldIDDepartamento.getText(), this.jTextFieldNomeDepartamento.getText(), this.jTextFieldNumeroDepartamento.getText());
-        //servicesDepartamento.confirmarAlteracao(this.jTableDepartamento, this.jTextFieldIDDepartamento.getText(), this.jTextFieldNomeDepartamento.getText(), Integer.parseInt(this.jTextFieldNumeroDepartamento.getText()));
-        
-        servicesDepartamento.atualizaTabela(this.defaultTableModel, 
-                this.jTableDepartamento);
-        
-        //atualizaTabela();
-               
+        servicesDepartamento.atualizandoTabela(this.defaultTableModel, 
+                this.jTableDepartamento);              
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     private void jTextFieldPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPesquisaKeyReleased
-        
-        defaultTableModel.setNumRows(0);
-        jTextFieldNomeDepartamento.setText(null);
-        jTextFieldNumeroDepartamento.setText(null);
-        
-        //servicesDepartamento.limparTabela(this.defaultTableModel, this.jTextFieldIDDepartamento.getText(), this.jTextFieldNomeDepartamento.getText(), this.jTextFieldNumeroDepartamento.getText());
+        limparTabela();
         
         servicesDepartamento.filtrarDepartamento(this.jTextFieldPesquisa.
                 getText(), this.defaultTableModel, this.jTableDepartamento, 
-                this.jComboBoxFiltro);
-        
-        //filtrarDepartamento();
-              
+                this.jComboBoxFiltro);           
     }//GEN-LAST:event_jTextFieldPesquisaKeyReleased
 
     private void jComboBoxFiltroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxFiltroItemStateChanged
-        
-        defaultTableModel.setNumRows(0);
-        jTextFieldNomeDepartamento.setText(null);
-        jTextFieldNumeroDepartamento.setText(null);
-        
-        //servicesDepartamento.limparTabela(this.defaultTableModel, this.jTextFieldIDDepartamento.getText(), this.jTextFieldNomeDepartamento.getText(), this.jTextFieldNumeroDepartamento.getText());
+        limparTabela();
         
         servicesDepartamento.filtrarDepartamento(this.jTextFieldPesquisa.
                 getText(), this.defaultTableModel, this.jTableDepartamento, 
-                this.jComboBoxFiltro);
-        
-        //filtrarDepartamento();
-      
+                this.jComboBoxFiltro);   
     }//GEN-LAST:event_jComboBoxFiltroItemStateChanged
 
     private void jComboBoxFiltroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxFiltroKeyReleased
-        
-        defaultTableModel.setNumRows(0);
-        jTextFieldNomeDepartamento.setText(null);
-        jTextFieldNumeroDepartamento.setText(null);
-        //servicesDepartamento.limparTabela(this.defaultTableModel, this.jTextFieldIDDepartamento.getText(), this.jTextFieldNomeDepartamento.getText(), this.jTextFieldNumeroDepartamento.getText());
+        limparTabela();  
         
         servicesDepartamento.filtrarDepartamento(this.jTextFieldPesquisa.
                 getText(), this.defaultTableModel, this.jTableDepartamento, 
-                this.jComboBoxFiltro);
-        
-        //filtrarDepartamento();
-                       
+                this.jComboBoxFiltro);                     
     }//GEN-LAST:event_jComboBoxFiltroKeyReleased
-
-    /*private void limparTabela(){
-        defaultTableModel.setNumRows(0);
-        jTextFieldIDDepartamento.setText(null);
-        jTextFieldNomeDepartamento.setText(null);
-        jTextFieldNumeroDepartamento.setText(null);
-    }*/
-    
-    /*private void atualizaTabela() {
-        try {
-                
-            ServicesDepartamento servicesDepartamento = ServicesFactory.getDepartamentosServicos();
-            
-            ArrayList<Departamento> listaDepartamentos = new ArrayList<>();
-            
-            listaDepartamentos = servicesDepartamento.buscarDepartamento();
-
-            for (int i = 0; i < listaDepartamentos.size(); i++) {
-                defaultTableModel.addRow(new String[]{
-                    String.valueOf(listaDepartamentos.get(i).getIdDepartamento()),
-                    String.valueOf(listaDepartamentos.get(i).getNome()),
-                    String.valueOf(listaDepartamentos.get(i).getNumero())
-                   
-                });
-            }
-            
-            jTableDepartamento.setModel(defaultTableModel);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(
-                        this,
-                        "Erro ao Atualizar Tabela " + e.getMessage(),
-                        "Erro",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        jTextFieldIDDepartamento.setText(null);
-        
-    }*/
-    
-    /*private void deletarDepartamento(){
-       try {
-           int linha = jTableDepartamento.getSelectedRow();
-           if (linha == -1){
-               JOptionPane.showMessageDialog(
-                       this,
-                       "Selecione Uma Linha");
-           } else{
-               String id = jTableDepartamento.getValueAt(linha, 0).toString();
-               ServicesDepartamento servicesDepartamento = ServicesFactory.getDepartamentosServicos();
-               servicesDepartamento.deletarDepartamento(id);
-               
-               JOptionPane.showMessageDialog(
-                       this,
-                       "Departamento Deletado");
-           }
-        } catch (Exception e) {
-           JOptionPane.showMessageDialog(
-                   this,
-                   "Erro ao Deletar Departamento " + e.getMessage(),
-                   "ERRO",
-                   JOptionPane.ERROR_MESSAGE);
-        }   
-        jTextFieldIDDepartamento.setText(null);
-        
-    }*/
-    
-    /*private void filtrarDepartamento(){
-       try {
-           if (jTextFieldPesquisa.getText().isEmpty()){
-               servicesDepartamento.atualizaTabela(this.defaultTableModel, this.jTableDepartamento);
-           } else{
-                String pesq = jTextFieldPesquisa.getText();
-                String filtro = jComboBoxFiltro.getSelectedItem().toString();
-                String query = "";
-                if (filtro.equalsIgnoreCase("Identificação")){
-                    query = "WHERE id_departamento LIKE '%" + pesq + "%'";                    
-                } else if (filtro.equalsIgnoreCase("Nome")){
-                    
-                    query = "WHERE nome LIKE '%" + pesq + "%'";
-
-                } else if (filtro.equalsIgnoreCase("Numero")){
-                    
-                    query = "WHERE numero LIKE '%" + pesq + "%'";
-                }
-                
-                ServicesDepartamento ServicesDepartamento = ServicesFactory.getDepartamentosServicos();
-                ArrayList<Departamento> listaDepartamentos = ServicesDepartamento.filtrarDepartamento(query);
-                
-                for (int i = 0 ; i < listaDepartamentos.size() ; i ++){
-                    defaultTableModel.addRow(new String[]{
-                        listaDepartamentos.get(i).getIdDepartamento(),
-                        listaDepartamentos.get(i).getNome(),
-                        String.valueOf(listaDepartamentos.get(i).getNumero()),
-                    
-                    });
-                }
-                jTableDepartamento.setModel(defaultTableModel);
-            }
-           
-        } catch (Exception e) {           
-            jTextFieldPesquisa.setText(null);
-            JOptionPane.showMessageDialog(this,
-                    "Erro ao Filtrar Departamento " + e.getMessage(),
-                    "ERRO",
-                    JOptionPane.ERROR_MESSAGE);
-        }
-    }*/
     
     private void alterarDepartamento(){
          try {
@@ -552,7 +390,7 @@ public class GUIManutencaoDeDepartamento extends javax.swing.JFrame {
                 
                 jTextFieldIDDepartamento.setText(id);
                 jTextFieldNomeDepartamento.setText(nome);
-                jTextFieldNumeroDepartamento.setText(numero);
+                jTextFieldCNPJDepartamento.setText(numero);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this,
@@ -572,11 +410,11 @@ public class GUIManutencaoDeDepartamento extends javax.swing.JFrame {
             }else{
                 objDepartamento.setIdDepartamento(jTextFieldIDDepartamento.getText());
                 objDepartamento.setNome(jTextFieldNomeDepartamento.getText());
-                objDepartamento.setCNPJ(jTextFieldNumeroDepartamento.getText());
+                objDepartamento.setCNPJ(Integer.parseInt(jTextFieldCNPJDepartamento.getText()));
 
-                ServicesDepartamento servicesDepartamento = br.com.web.services.ServicesFactory.getDepartamentosServicos();
+                ServicesDepartamento servicesDepartamento = services.ServicesFactory.getDepartamentosServicos();
 
-                servicesDepartamento.alterarDepartamentos(objDepartamento);
+                servicesDepartamento.alterarDepartamento(objDepartamento);
                 JOptionPane.showMessageDialog(
                 rootPane, 
                 "Departamento Alterado Com Sucesso!");
@@ -605,9 +443,9 @@ public class GUIManutencaoDeDepartamento extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableDepartamento;
+    private javax.swing.JTextField jTextFieldCNPJDepartamento;
     private javax.swing.JTextField jTextFieldIDDepartamento;
     private javax.swing.JTextField jTextFieldNomeDepartamento;
-    private javax.swing.JTextField jTextFieldNumeroDepartamento;
     private javax.swing.JTextField jTextFieldPesquisa;
     // End of variables declaration//GEN-END:variables
 }

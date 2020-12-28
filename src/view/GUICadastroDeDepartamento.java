@@ -1,8 +1,9 @@
 //PROJECT NAME: prjRHBanco
-package br.com.web.view;
-import br.com.web.model.Departamento;
-import br.com.web.services.ServicesDepartamento;
-import br.com.web.services.ServicesFactory;
+package view;
+
+import model.Departamento;
+import services.ServicesDepartamento;
+import services.ServicesFactory;
 import javax.swing.JOptionPane;
 /**
  *
@@ -15,6 +16,7 @@ public class GUICadastroDeDepartamento extends javax.swing.JFrame {
     ServicesFactory servicesFactory = new ServicesFactory();
     ServicesDepartamento servicesDepartamento = new ServicesDepartamento();
     Departamento objDepartamento = new Departamento();
+    ServicesDepartamento objServicesDepartamento = new ServicesDepartamento();
     
     public GUICadastroDeDepartamento() {
         initComponents();
@@ -40,6 +42,7 @@ public class GUICadastroDeDepartamento extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Departamento");
+        setSize(new java.awt.Dimension(600, 0));
 
         jLayeredPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -198,83 +201,32 @@ public class GUICadastroDeDepartamento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaActionPerformed
-        
-        servicesFactory.abrirManutencaoDeDepartamento();
-        this.dispose();
-        
+        servicesFactory.abrirManutencaoDepartamento();
+        this.dispose();        
     }//GEN-LAST:event_jButtonListaActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        
-        //cadastra
-       
-        try {      
-            objDepartamento.setIdDepartamento(this.jTextFieldIdentificacao.getText());
-            objDepartamento.setNome(this.jTextFieldNome.getText());
-            objDepartamento.setCNPJ(this.jTextFieldCNPJ.getText());
-               
-                      
-            /*if (servicesDepartamento.verificarCNPJ(objDepartamento.getCNPJ()) == null){
-                JOptionPane.showMessageDialog(null, "CNPJ Inválida", "ERRO", JOptionPane.ERROR_MESSAGE);
-            }else{
-                ServicesDepartamento servicesDepartamento = br.com.web.services.
-                        ServicesFactory.getDepartamentosServicos();
-                servicesDepartamento.cadastrarDepartamento(objDepartamento);
-                JOptionPane.showMessageDialog(null, "Departamento Cadastrado");
-                
-                servicesDepartamento.cadastrarDepartamento(objDepartamento);
-            
-                JOptionPane.showMessageDialog(rootPane,"Departamento Cadastrada");
-            }*/
-
-            servicesDepartamento.cadastrarDepartamento(objDepartamento);
-            
-            JOptionPane.showMessageDialog(rootPane,"Departamento Cadastrada");
-            
-            
-            jTextFieldIdentificacao.setText(null);
-            jTextFieldNome.setText(null);
-            jTextFieldCNPJ.setText(null);
-            jTextFieldIdentificacao.grabFocus();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro Ao Cadastrar Departamento "
-                    + e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
-            
-            jTextFieldIdentificacao.setText(null);
-            jTextFieldNome.setText(null);
-            jTextFieldCNPJ.setText(null);
-            jTextFieldIdentificacao.grabFocus();
-        }
-
+        objServicesDepartamento.cadastrarDepartamento(this.jTextFieldIdentificacao, this.jTextFieldNome, this.jTextFieldCNPJ);
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
-        
         servicesFactory.abirMenuPrincipal();
-        this.dispose();       
-        
+        this.dispose();             
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonDesligarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDesligarActionPerformed
-        
         servicesFactory.desligarSistema();
         this.dispose();
-        
     }//GEN-LAST:event_jButtonDesligarActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-        
-        //limpa
         jTextFieldIdentificacao.setText(null);
         jTextFieldNome.setText(null);
         jTextFieldCNPJ.setText(null);
         jTextFieldIdentificacao.grabFocus();
-        
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
     private void jTextFieldIdentificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdentificacaoActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldIdentificacaoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

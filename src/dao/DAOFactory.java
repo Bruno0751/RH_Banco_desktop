@@ -1,5 +1,5 @@
 //PROJECT NAME: prjRHBanco
-package br.com.web.dao;
+package dao;
 /**
  *
  * @author Bruno Gressler da Silveira
